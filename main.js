@@ -8,3 +8,8 @@ toggleBtn.onclick = function() {
 
     toggleBtnIcon.classList = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
 }
+
+function dark_theme() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+}

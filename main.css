@@ -15,11 +15,15 @@ header {
 
 body {
     min-height: 100vh;
-    background-image: url(https://wallpaperaccess.com/full/304795.jpg);
+    background-image: url(img/wood.jpg);
     backdrop-filter: blur(2px);
     background-size: cover;
     background-position: center;
     padding-top: 60px;
+}
+
+.dark-mode {
+    background-image: url(img/wood_dark.png);
 }
 
 li {
@@ -237,6 +241,7 @@ a:hover {
     padding: 10px 30px;
     color: white;
     border-radius: 50px;
+    margin: 5px;
 }
 
 .card:hover a {
@@ -358,7 +363,6 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-/* Add this to existing media query for mobile responsiveness */
 @media (max-width: 992px) {
     .dropdown-menu {
         position: static;
