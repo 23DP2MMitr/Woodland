@@ -363,6 +363,15 @@ a:hover {
     transition: all 0.3s ease;
 }
 
+input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+
 @media (max-width: 992px) {
     .dropdown-menu {
         position: static;

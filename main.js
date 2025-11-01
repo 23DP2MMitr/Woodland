@@ -13,3 +13,14 @@ function dark_theme() {
     var element = document.body;
     element.classList.toggle("dark-mode");
 }
+
+function submit_form() {
+    const email = document.getElementById("email");
+    if (!email.value.includes("@")) {
+        alert("Nepareiza e-pasta adrese");
+        email.style.color = "red";
+        email.style.backgroundColor = "#ffcccc";
+        return false;
+    }
+    return true;
+}
