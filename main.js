@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- NAVBAR / BURGER ---
     const toggleBtn = document.querySelector('.toggle_btn');
     const toggleBtnIcon = document.querySelector('.toggle_btn i');
     const burgerMenu = document.querySelector('.burger_menu');
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.toggle("dark-mode");
     }
 
-    // --- SEARCH / FILTER (Uzdevums 2) ---
     const searchInput = document.getElementById('search');
     const cardNodes = Array.from(document.querySelectorAll('.single-card'));
 
@@ -34,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- FORM VALIDATION (Uzdevums 1) ---
     const form = document.getElementById('contact');
     if (form) {
         function showErrorField(el, msg) {
@@ -62,9 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // email regex
+        // https://www.geeksforgeeks.org/javascript/javascript-program-to-validate-an-email-address/
         function validEmail(v) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(v);
         }
 
         form.addEventListener('submit', function (e) {
@@ -75,30 +73,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById('email');
             const subject = document.getElementById('subject');
 
-            // clear previous errors
-            [fname, email, subject].forEach(el => clearErrorField(el));
-
-            // validate first name
             if (!fname.value.trim()) {
                 showErrorField(fname, 'Please enter your name.');
                 valid = false;
             }
-
-            // validate email
             if (!email.value.trim()) {
                 showErrorField(email, 'Please enter your email.');
                 valid = false;
-            } else if (!validEmail(email.value.trim())) {
+            }
+            else if (!validEmail(email.value.trim())) {
                 showErrorField(email, 'Please enter a valid email address.');
                 valid = false;
             }
-
-            // validate subject/message
             if (!subject.value.trim()) {
                 showErrorField(subject, 'Please enter a message.');
                 valid = false;
             }
-
             if (!valid) {
                 // focus first invalid field
                 const firstInvalid = form.querySelector('.error');
@@ -106,29 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // if valid: show success message and reset form
-            // remove previous success if any
             let existing = form.querySelector('.form-success');
             if (existing) existing.remove();
-
             const success = document.createElement('div');
             success.className = 'form-success';
             success.textContent = 'Form has been successfully submitted. Thank you!';
             form.appendChild(success);
-
-            // clear form fields
             form.reset();
-
-            // remove any lingering error states
             [fname, email, subject].forEach(el => clearErrorField(el));
-
-            // hide success after a short delay
             setTimeout(() => {
                 if (success && success.parentNode) success.remove();
             }, 5000);
         });
 
-        // clear error state on input
         ['input','textarea'].forEach(evt => {
             form.addEventListener(evt, function (e) {
                 const el = e.target;
